@@ -9,7 +9,7 @@
   apt:
     name: cmdtest
     state: absent
-  when: ansible_distribution_version is verison("17.04", "==")
+  when: ansible_distribution_version is version("17.04", "==")
 
 - name: yarn | Import YARN APT key
   apt_key:
