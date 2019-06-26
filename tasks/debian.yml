@@ -1,0 +1,23 @@
+---
+- name: yarn | Make sure HTTPS is supported by apt
+  apt:
+    name: apt-transport-https
+    state: present
+    update_cache: yes
+
+- name: yarn | Remove cmdtest
+  apt:
+    name: cmdtest
+    state: absent
+  when: ansible_distribution_version is verison("17.04", "==")
+
+- name: yarn | Import YARN APT key
+  apt_key:
+    url: "{{ yarn_debian_repo_gpg_key }}"
+    state: present
+
+- name: yarn | Install YARN APT repo
+  apt_repository:
+    repo: "deb {{ yarn_debian_repo_url }}"
+    filename: "yarn"
+    state: present

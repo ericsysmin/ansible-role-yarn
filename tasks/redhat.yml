@@ -1,0 +1,13 @@
+---
+- name: yarn | Redhat | Install YARN YUM repo.
+  yum_repository:
+    name: yarn
+    description: Yarn Repository
+    baseurl: "{{ yarn_rhel_repo_url }}"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "{{ yarn_rhel_repo_gpg_key }}"
+    state: present
+
+- name: yarn | Redhat | Install NodeJS package for yarn dependency
+  package: name=nodejs state=present

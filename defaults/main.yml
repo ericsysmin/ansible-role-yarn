@@ -1,0 +1,8 @@
+---
+# defaults file for ericsysmin.yarn
+
+yarn_release: stable
+yarn_debian_repo_url: "https://dl.yarnpkg.com/debian/ {{ yarn_release }} main"
+yarn_debian_repo_gpg_key: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+yarn_rhel_repo_url: "https://dl.yarnpkg.com/rpm/"
+yarn_rhel_repo_gpg_key: "https://dl.yarnpkg.com/rpm/pubkey.gpg"

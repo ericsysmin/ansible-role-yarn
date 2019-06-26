@@ -1,0 +1,8 @@
+---
+# tasks file for ericsysmin.yarn
+
+- name: yarn | Include specific os family tasks
+  include_tasks: "{{ ansible_os_family|lower }}.yml"
+
+- name: yarn | Install yarn package manager
+  package: name=yarn state=present
