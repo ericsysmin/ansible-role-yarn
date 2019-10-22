@@ -1,14 +1,17 @@
 ---
 - name: yarn | Make sure HTTPS is supported by apt
-  apt:
-    name: apt-transport-https
-    state: present
-    update_cache: yes
+  apt: name=apt-transport-https update_cache=yes
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
 
 - name: yarn | Remove cmdtest
-  apt:
-    name: cmdtest
-    state: absent
+  apt: name=cmdtest state=absent
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
   when: ansible_distribution_version is version("17.04", "==")
 
 - name: yarn | Import YARN APT key
